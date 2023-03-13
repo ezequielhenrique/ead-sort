@@ -8,22 +8,19 @@ public class InsertionSort implements Sorter{
     public int[] sort(int[] elements) {
         int [] sorted = elements.clone();
 
-        int aux;
-        int j;
-        
-        for (int i=1; i < elements.length; i++) {
-           aux = elements[i];
-           j = i-1;
+        for (int i=1; i<sorted.length; i++) {
+            int j = i;
 
-           while(j>= 0 && elements[j] > aux) {
-            elements[j+1] = elements[j];
-            j--;
-           }
+            while (j > 0 && sorted[j-1] > sorted[j]) {
+                int aux = sorted[j-1];
+                sorted[j-1] = sorted[j];
+                sorted[j] = aux;
 
-           elements[j+1] = aux;
+                j--;
+            }
         }
 
-        return elements;
+        return sorted;
     }
 
     @Override
